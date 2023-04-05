@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Views\Resources\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Resources\address.png" />
+    <None Remove="Views\Resources\call.png" />
+    <None Remove="Views\Resources\car.png" />
+    <None Remove="Views\Resources\event.png" />
+    <None Remove="Views\Resources\logo.png" />
+    <None Remove="Views\Resources\microsoft-shell-desktop.ico" />
+    <None Remove="Views\Resources\microsoft-shell-gallery.ico" />
+    <None Remove="Views\Resources\microsoft-shell-monitor.ico" />
+    <None Remove="Views\Resources\microsoft-shell-settings.ico" />
+    <None Remove="Views\Resources\microsoft-shell-workspace.ico" />
+    <None Remove="Views\Resources\noRelation.png" />
+    <None Remove="Views\Resources\personNocCrim.png" />
+    <None Remove="Views\Resources\relation.png" />
+    <None Remove="Views\Resources\suspect.png" />
+    <None Remove="Views\Resources\victim.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Resources\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Resources\car.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Resources\call.png" />
+    <Resource Include="Views\Resources\event.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Resources\address.png" />
+    <Resource Include="Views\Resources\noRelation.png" />
+    <Resource Include="Views\Resources\personNocCrim.png" />
+    <Resource Include="Views\Resources\relation.png" />
+    <Resource Include="Views\Resources\suspect.png" />
+    <Resource Include="Views\Resources\victim.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.100.3" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="EPPlus" Version="6.1.3" />
+    <PackageReference Include="GraphSharp" Version="1.1.0" />
+    <PackageReference Include="GraphX" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="WPF-UI" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnalyseApi\AnalyseApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Resources\logo.png" />
+    <Resource Include="Views\Resources\microsoft-shell-desktop.ico" />
+    <Resource Include="Views\Resources\microsoft-shell-gallery.ico" />
+    <Resource Include="Views\Resources\microsoft-shell-monitor.ico" />
+    <Resource Include="Views\Resources\microsoft-shell-settings.ico" />
+    <Resource Include="Views\Resources\microsoft-shell-workspace.ico" />
+  </ItemGroup>
+
+</Project>

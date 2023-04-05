@@ -1,0 +1,103 @@
+﻿<Window 
+    x:Class="AnalyseInterfaces.Views.Windows.GlobalWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AnalyseInterfaces.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:pages="clr-namespace:AnalyseInterfaces.Views.Pages"
+    Title="VCrim"
+    Width="1200" 
+    Height="654" 
+    d:DesignHeight="650"
+    d:DesignWidth="700"
+    Background="{DynamicResource ApplicationBackgroundBrush}"
+    Style="{DynamicResource UiWindow}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid>
+        <!--  The first division of the grid divides the application into the top bar (TitleBar) and the content itself  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            x:Name="RootGrid"
+            Grid.Row="1"
+            Margin="12,6,0,12"
+            Visibility="Visible">
+            <!--  Here we separate CardProfile, Navigation and Frame  -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Profile card displays the app's icon, name, and subtitle  -->
+            <Grid Grid.Row="0" Margin="6,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Column="0"
+                    Width="40"
+                    Height="40"
+                    CornerRadius="20">
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Views/Resources/logo.png" />
+                    </Border.Background>
+                </Border>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="12,0,0,0"
+                    VerticalAlignment="Center">
+                    <TextBlock FontWeight="Medium" Text="VCrim" />
+                </StackPanel>
+            </Grid>
+      
+
+
+            <!--  Pages are presented here  -->
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="1">
+           
+                <ui:Breadcrumb
+                    Grid.Row="0"
+                    Margin="0,0,0,18"
+                     />
+                <Frame x:Name="MainFrame"  />
+
+            </Grid>
+        </Grid>
+      
+        <!--  Contains buttons responsible for maximizing, minimizing and closing the app. It also has a background colored strip that allows you to move the application around  -->
+        <ui:TitleBar
+            x:Name="RootTitleBar"
+            Grid.Row="0"
+            ForceShutdown="False"
+            MinimizeToTray="False"
+            ShowHelp="False"
+            UseSnapLayout="True">
+            <ui:TitleBar.Header>
+                <StackPanel
+                    Margin="0,0,12,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+                </StackPanel>
+            </ui:TitleBar.Header>
+        </ui:TitleBar>
+
+
+    </Grid>
+</Window>

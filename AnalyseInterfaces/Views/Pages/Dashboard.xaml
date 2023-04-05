@@ -1,0 +1,85 @@
+﻿<ui:UiPage
+    x:Class="AnalyseInterfaces.Views.Pages.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AnalyseInterfaces.Views.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="Dashboard"
+    d:DataContext="{d:DesignInstance local:Dashboard,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="750"
+    d:DesignWidth="800"
+    Scrollable="True"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <Border
+            CornerRadius="8,0,0,0">
+
+            <Border CornerRadius="8,0,0,0">
+                <Border.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Offset="0" Color="#1F000000" />
+                        <GradientStop Offset="1" Color="#4F000000" />
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <StackPanel
+                        Margin="64"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="Transparent">
+                      
+                        <TextBlock
+                            LineHeight="50"
+                            FontSize="28"
+                            FontWeight="Bold"
+                            Foreground="#FFFFFF"
+                            Text="VCrim" />
+                        <TextBlock
+                            LineHeight="50"
+                            FontSize="18"
+                            Foreground="#B7FFFFFF"
+                            Text="Logiciel permet la visualisation de bases de données et la formulation d'hypothèses ." />
+                     
+                        <TextBlock
+                            LineHeight="50"
+                            FontSize="18"
+                            Foreground="#B7FFFFFF"
+                            Text="  Démarrez une nouvelle visualisation de données en 3 étapes !." />
+                   
+                        <ui:Button
+                            Height="36"
+                            Margin="0,6,0,0"
+                            Padding="30,6"
+                            HorizontalAlignment="Left"
+                            Appearance="Dark"
+                            Click="OnGoToSecondWindowClicked"
+                            Content="Commancez une annalyse"
+                            Foreground="{DynamicResource TextFillColorLightPrimaryBrush}"  />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="12,18,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+
+
+
+
+    </Grid>
+</ui:UiPage>

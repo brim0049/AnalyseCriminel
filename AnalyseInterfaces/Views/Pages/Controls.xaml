@@ -1,0 +1,160 @@
+﻿<ui:UiPage
+    x:Class="AnalyseInterfaces.Views.Pages.Controls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AnalyseInterfaces.Views.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="Dashboard"
+    d:DataContext="{d:DesignInstance local:Controls,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="750"
+    d:DesignWidth="800"
+    Scrollable="True"
+    mc:Ignorable="d"
+    x:Name="Control">
+
+    <Grid>
+        <Border
+            CornerRadius="8,0,0,0">
+            <Border CornerRadius="8,0,0,0">
+                <Border.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Offset="0" Color="#1F000000" />
+                        <GradientStop Offset="1" Color="#4F000000" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+        </Border>
+
+        <Grid Margin="12,18,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <DataGrid Background="Transparent" x:Name="myDataGrid"  ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson}" AutoGenerateColumns="False"  CanUserAddRows="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Numéro d'identification national" Binding="{Binding NIN}" />
+                    <DataGridTextColumn Header="Prénom" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="Nom" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="Numéro téléphone" Binding="{Binding Phone}" />
+                    <DataGridTextColumn Header="Numéro de la rue" Binding="{Binding Address.NoStreet}" />
+                    <DataGridTextColumn Header="Nom de la rue" Binding="{Binding Address.NameStreet}" />
+                    <DataGridTextColumn Header="Ville" Binding="{Binding Address.Ville}" />
+                    <DataGridTemplateColumn Header="Modifier">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ui:Button Appearance="Success" Content="Modifier" Click="Edit_Button" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Supprimer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ui:Button Appearance="Danger" Content="Supprimer" Click="Delete_Button"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Historique d'appels">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ui:Button Appearance="Primary" Content="Voir l'historique" Click="appel_Button"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Propriétés">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ui:Button Appearance="Secondary" Content="Voir propriétés" Click="pro_Button"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Popup x:Name="AppelPopup" IsOpen="False" PlacementTarget="{Binding ElementName=Control}" Placement="Center" Width="700" Height="500"  StaysOpen="False"  
+       AllowsTransparency="False" 
+               
+       PopupAnimation="Fade"
+        >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="#003366" Height="30">
+                    <TextBlock Text="Historique d'appels" VerticalAlignment="Center" Margin="10,0"/>
+                </Border>
+                <Border  Grid.Row="1" BorderThickness="1">
+
+                    <Grid>
+
+                        <DataGrid x:Name="AppelDataGrid"  ItemsSource="{Binding Call}" SelectedItem="{Binding SelectedCall}" AutoGenerateColumns="False"  CanUserAddRows="False" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Numero téléphone" Binding="{Binding Number}" />
+                                <DataGridTextColumn Header="Emplacement" Binding="{Binding Zone}" />
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
+                                <DataGridTextColumn Header="Durée" Binding="{Binding Duration}" />
+                                <DataGridTemplateColumn Header="Supprimer">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ui:Button Appearance="Danger" Content="Supprimer" Click="Delete_Appel_Button"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <ui:Button Content="Fermer" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Margin="0,0,0,10" 
+                Click="Close_Button" />
+                    </Grid>
+                </Border>
+            </Grid>
+           
+        </Popup>
+        <Popup x:Name="ProPopup" IsOpen="False" PlacementTarget="{Binding ElementName=Control}" Placement="Center" Width="700" Height="500"  StaysOpen="False"  
+       AllowsTransparency="False" 
+               
+       PopupAnimation="Fade"
+        >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="#003366" Height="30">
+                    <TextBlock Text="Propriétés" VerticalAlignment="Center" Margin="10,0"/>
+                </Border>
+                <Border  Grid.Row="1" BorderThickness="1">
+
+                    <Grid>
+
+                        <DataGrid x:Name="ProDataGrid"  ItemsSource="{Binding Car}" SelectedItem="{Binding SelectedCar}" AutoGenerateColumns="False"  CanUserAddRows="False" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Marque" Binding="{Binding Mark}" />
+                                <DataGridTextColumn Header="Matricule" Binding="{Binding Matricule}" />
+                                <DataGridTemplateColumn Header="Supprimer">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ui:Button Appearance="Danger" Content="Supprimer" Click="Delete_Pro_Button"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <ui:Button Content="Fermer" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Margin="0,0,0,10" 
+                Click="Close_Button" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+        </Popup>
+    </Grid>
+</ui:UiPage>
